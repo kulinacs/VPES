@@ -1,0 +1,11 @@
+---
+# Add support for 32-bit binaries
+- name: Add support for 32-bit binaries
+  become: yes
+  raw: dpkg --add-architecture i386
+
+# Install needed packages for Vagrant images
+- name: Install packages
+  become: yes
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items: "{{ packages }}"

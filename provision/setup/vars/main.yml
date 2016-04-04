@@ -1,0 +1,5 @@
+---
+packages:
+  - xinetd
+  - libc6-i386
+  - gdb
