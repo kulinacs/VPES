@@ -1,5 +1,7 @@
 ---
-packages:
+neccesary_packages:
   - xinetd
   - libc6-i386
   - gdb
+additional_packages:
+  - python-dev

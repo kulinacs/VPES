@@ -1,11 +1,17 @@
 ---
 # Add support for 32-bit binaries
-- name: Add support for 32-bit binaries
+- name: Adding support for 32-bit binaries
   become: yes
   raw: dpkg --add-architecture i386
 
-# Install needed packages for Vagrant images
-- name: Install packages
+# Install neccessary packages for VPES
+- name: Installing neccessary packages
   become: yes
-  apt: pkg={{ item }} state=installed update_cache=yes
-  with_items: "{{ packages }}"
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items: "{{ neccesary_packages }}"
+
+# Install additional packages for VPES
+- name: Installing additional packages
+  become: yes
+  apt: name={{ item }} state=installed update_cache=no
+  with_items: "{{ additional_packages }}"

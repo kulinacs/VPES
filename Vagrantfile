@@ -15,6 +15,6 @@ Vagrant.configure(2) do |config|
 
   # Set the Virtual Machine name
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "binary_exploit_server"
+    vb.name = "personal_exploit_server"
   end
 end

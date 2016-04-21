@@ -1,0 +1,19 @@
+---
+- name: Checking for services backup
+  stat: path=/etc/services.backup
+  register: backup
+
+- name: Creating services backup
+  become: yes
+  command: cp /etc/services /etc/services.backup
+  when: backup.stat.exists == False
+
+- name: Restoring services backup
+  become: yes
+  command: cp /etc/services.backup /etc/services
+  when: backup.stat.exists == True
+
+- name: Clearing xinetd configuration
+  become: yes
+  command: rm -f /etc/xinetd/*
+  
